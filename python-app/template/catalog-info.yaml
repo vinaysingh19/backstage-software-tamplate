@@ -7,6 +7,6 @@ metadata:
     github.com/project-slug: vinaysingh19/${{ values.app_name }}
 #    backstage.io/techdocs-ref: dir:.
 spec:
-  type: documentation
+  type: service
   owner: development
   lifecycle: experimental

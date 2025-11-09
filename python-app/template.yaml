@@ -37,7 +37,7 @@ spec:
         url: ./templates
         values:
           app_name: ${{ parameters.component_id }}
-          env_name: ${{ parameters.environment }}
+          app_env: ${{ parameters.environment }}
         targetPath: ./python-app
     - id: publish
       name: Publish
