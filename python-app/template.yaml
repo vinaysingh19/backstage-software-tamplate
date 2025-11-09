@@ -1,0 +1,64 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-app
+  title: Python Application Template
+  description: Provision a minimal flask-based Python application.
+spec:
+  owner: development
+  type: service
+
+  parameters:
+    - title: Fill in some steps
+      description: Provide some information to create Python application
+      required:
+        - component_id
+        - environment
+      properties:
+        component_id:
+          type: string
+          title: Component name
+          description: Provide a component (Micro Service) name
+          pattern: '^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$'
+        environment:
+          type: string
+          title: Environment
+          description: Provide the environment where this component will be deployed
+          enum:
+            - dev
+            - staging
+            - prod
+
+  steps:
+    - id: fetch-base
+      action: fetch:template
+      name: Fetch Base
+      input:
+        url: ./templates
+        values:
+          app_name: ${{ parameters.component_id }}
+          env_name: ${{ parameters.environment }}
+        targetPath: ./python-app
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.component_id }}
+        repoUrl: https://github.com?vinaysingh19&repo=${{ parameters.component_id }}
+        protectctDefaultBranch: false
+        #repovisibility: public
+
+    - id: register
+      name: register
+      action: catalog:register
+      input:
+        repoContentUrl: ${{ steps['publish'].output.repoContentUrl }}
+        catalogPath: "/catalog-info.yaml"
+
+
+  output:
+    links:
+      - url: ${{ steps['publish'].output.remoteUrl }}
+        title: Repository

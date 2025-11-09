@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.app_name }}
+  description: python app deployed on kubernetes cluster
+  annotations:
+    github.com/project-slug: vinaysingh19/${{ values.app_name }}
+#    backstage.io/techdocs-ref: dir:.
+spec:
+  type: documentation
+  owner: development
+  lifecycle: experimental
