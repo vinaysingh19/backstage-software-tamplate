@@ -75,7 +75,7 @@ jobs:
             --dest-namespace ${{ values.app_env}} \
             --values values-${{ values.app_env }}.yaml \
             --revision main \
-            --sync-policy auto \
+            --sync-policy manual \
             --sync-option CreateNamespace=true
 
       - name: argocd app sync
