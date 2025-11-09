@@ -75,7 +75,7 @@ jobs:
       - name: Ensure ArgoCD repo add and create app
         shell: bash
         run: |
-          repo="https://github.com:vinaysingh199/${{ values.app_name }}.git"
+          repo="https://github.com/vinaysingh199/${{ values.app_name }}.git"
           argocd login argocd-server.argocd \
           argocd repo list | grep -q $repo || argocd repo add $repo
 
