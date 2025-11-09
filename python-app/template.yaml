@@ -51,11 +51,11 @@ spec:
         #repovisibility: public
 
     - id: register
-      name: register
+      name: Register
       action: catalog:register
       input:
-        repoContentUrl: ${{ steps['publish'].output.repoContentUrl }}
-        catalogPath: "/catalog-info.yaml"
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
 
 
   output:
