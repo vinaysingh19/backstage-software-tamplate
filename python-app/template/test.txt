@@ -1,4 +1,0 @@
-Hi this is created by backstage template!
-
-the app name is ${{ app_name }}
-the env name is ${{ app_env }}
