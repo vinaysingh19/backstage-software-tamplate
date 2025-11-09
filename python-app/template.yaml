@@ -46,7 +46,7 @@ spec:
         # allowedHosts:
         #   - github.com
         description: This is ${{ parameters.component_id }}
-        repoUrl: https://github.com?vinaysingh19&repo=${{ parameters.component_id }}
+        repoUrl: github.com?vinaysingh19&repo=${{ parameters.component_id }}
         protectDefaultBranch: false
         #repovisibility: public
 
